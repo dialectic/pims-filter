@@ -3,8 +3,10 @@ import numpy as np
 from scipy.linalg import eig, eigh
 from scipy.sparse.linalg import eigs, eigsh
 from scipy.sparse import dok_matrix, diags
+from matplotlib import pyplot as plt
 
-n_PC = 10 # number of principle components
+plot_it = True # must be n_PC = 2
+n_PC = 2 # number of principle components
 adjacency_file = 'dialectica-pimsifier/adjacency.json'
 test_file = 'dialectica-pimsifier/THESIS-code-dump/test_data.json'
 
@@ -28,11 +30,6 @@ for i in range(0,n_nodes):
     A[adjacents[j],i] = 1
 # populate Laplacian
 L = D - A
-# di = 2
-# print(D[di,di])
-# print(A[di,di])
-# print(L[di,di])
-# pause
 
 # eigendecomposition
 # - using ARPACK via https://docs.scipy.org/doc/scipy/reference/tutorial/arpack.html
@@ -48,7 +45,7 @@ print(f"  - truncated evals: {evals}")
 
 # TODO error checking: evals should all be positive or zero
 
-# build projection lookup table
+# build projection matrix P
 # - a node i vector is a unit vector e_i
 # - Saerens (2004) eq 8 tells us a transformed node i vector is
 # -- Lambda^(1/2) U^T e_i.
@@ -63,7 +60,15 @@ for i in range(0,n_PC):
   Lambda_root[i,i] = np.sqrt(evals[i])
   for j in range(0,n_nodes):
     U[j,i] = evecs[j,i]
-# construct projection matrix P
+# - construct projection matrix P
 P = Lambda_root*U.T # sparse matrix mult
 P = P[0:n_PC,:]
 print(f"  - P shape: {P.shape}")
+
+# plot
+if plot_it:
+  P = np.asarray(P.todense())
+  plt.scatter(P[0,:],P[1,:])
+  # plt.tight_layout()
+  plt.xlim([P[0,:].min(),P[0,:].max()])
+  plt.show()
