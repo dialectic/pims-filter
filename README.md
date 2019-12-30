@@ -2,6 +2,14 @@
 
 This Python package is a personal information management filter (PIMS filter) for text-based user information.
 
+## Installation
+
+To clone recursively all submodules, use the following command.
+
+```bash
+git clone --recursive https://github.com/ricopicone/pims-filter.git
+```
+
 ## Submodules
 
 This package uses a submodule structure as follows.
