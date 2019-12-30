@@ -4,10 +4,15 @@ This Python package is a personal information management filter (PIMS filter) fo
 
 ## Installation
 
-To clone recursively all submodules, use the following command.
+To clone recursively all submodules, use the command
 
 ```bash
 git clone --recursive https://github.com/ricopicone/pims-filter.git
+```
+and `cd` into `pims-filter`. `cd into each submodule `dialectica-core` and `THESIS-code-dump` and checkout the master branch with the following.
+
+```bash
+git checkout master
 ```
 
 ## Submodules
