@@ -35,7 +35,7 @@ This package uses a submodule structure as follows.
     - Projection matrix (`P`)
     - Scatter plot figure
   - Should have methods:
-    - `load_adjacency` that loads from `adjacency_file` and populates `adjacency_file` and `adjacency_list` 
+    - `load_adjacency` that loads from `dialectica-pimsifier/adjacency.json` and populates `adjacency_file` and `adjacency_list` 
     - `build_sparse_matrices` that populates `A`, `D`, `L`
     - `eigendecomposition` that populates `evals` and `evecs`
     - `project` that projects to <a href="https://www.codecogs.com/eqnedit.php?latex=\mathbb{R}^n" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mathbb{R}^n" title="\mathbb{R}^n" /></a> with <a href="https://www.codecogs.com/eqnedit.php?latex=n" target="_blank"><img src="https://latex.codecogs.com/gif.latex?n" title="n" /></a>` = n_PC` and populates `P`
