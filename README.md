@@ -38,5 +38,7 @@ This package uses a submodule structure as follows.
     - `load_adjacency` that loads from `adjacency_file` and populates `adjacency_file` and `adjacency_list` 
     - `build_sparse_matrices` that populates `A`, `D`, `L`
     - `eigendecomposition` that populates `evals` and `evecs`
-    - `project` that projects to $R^{n_{\text{PC}}}$ and populates `P`
-    - `plot_it` that plots in $\mathbb{R}^2$ and maybe $\mathbb{R}^3$
+    - `project` that projects to <a href="https://www.codecogs.com/eqnedit.php?latex=\mathbb{R}^n" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mathbb{R}^n" title="\mathbb{R}^n" /></a> with <a href="https://www.codecogs.com/eqnedit.php?latex=n" target="_blank"><img src="https://latex.codecogs.com/gif.latex?n" title="n" /></a>` = n_PC` and populates `P`
+    - `plot_it` that plots in <a href="https://www.codecogs.com/eqnedit.php?latex=\mathbb{R}^3" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mathbb{R}^2" title="\mathbb{R}^2" /></a> and maybe <a href="https://www.codecogs.com/eqnedit.php?latex=\mathbb{R}^3" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mathbb{R}^3" title="\mathbb{R}^3" /></a>
+  - Work TODO on submodules
+    - Work on submodules is outlined in each submodule's `README`
