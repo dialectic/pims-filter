@@ -1,6 +1,3 @@
 [submodule "dialectica-pims-to-json"]
 	path = dialectica-pims-to-json
 	url = https://github.com/ricopicone/dialectica-pims-to-json.git
-[submodule "dialectica-pimsifier"]
-	path = dialectica-pimsifier
-	url = https://github.com/ricopicone/dialectica-pimsifier.git
