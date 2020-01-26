@@ -2,28 +2,6 @@
 
 This Python package is a personal information management filter (PIMS filter) for text-based user information.
 
-## Installation
-
-To clone recursively all submodules, use the command
-
-```bash
-git clone --recursive https://github.com/ricopicone/pims-filter.git
-```
-and `cd` into `pims-filter`. `cd into each submodule `dialectica-core` and `THESIS-code-dump` and checkout the master branch with the following.
-
-```bash
-git checkout master
-```
-
-## Submodules
-
-This package uses a submodule structure as follows.
-
-- `pims-filter` (python) computes filter from `adjacency.json` and plots output
-  - `dialectica-pimsifier` (ruby) builds Dialectica class from `THESIS-code-dump` and exports graph as adjacency array in `adjacency.json`
-    - `dialectica-core` (ruby) used to build Dialectica class
-    - `THESIS-code-dump` (python) tagged TeX to json dictionary
-
 ## TODO
 
 - Convert `pims-filter.py` script into a class.
