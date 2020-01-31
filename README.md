@@ -1,5 +1,7 @@
 # pims-filter
 
+[![DOI](https://zenodo.org/badge/229685927.svg)](https://zenodo.org/badge/latestdoi/229685927)
+
 This Python package is a personal information management filter (PIMS filter) for text-based user information.
 
 ## TODO
