@@ -11,12 +11,14 @@ class PIMS_Filter:
   """
   def __init__(self, adjacency_file, n_PC, plot_it=False):
     self.adjacency_file = adjacency_file
+    self.n_PC = n_PC
+
 
 
 
   def load_adjacency(self):
     # Loads adjacency file and populates adjacency_list and adjacency_index
-    with open(adjacency_file, 'rb') as adj_file:
+    with open(self.adjacency_file, 'rb') as adj_file:
       adjacency_dict = json.load(adj_file)
 
     try:
@@ -42,6 +44,14 @@ class PIMS_Filter:
     # plots in R^2, could also build to plot in R^3
     print('temp')
 
+
+
+
+
+if __name__ == '__main__':
+  PF = PIMS_Filter
+
+  
 ##################################################################
 ####################### ORIGINAL SCRIPT ##########################
 ##################################################################
