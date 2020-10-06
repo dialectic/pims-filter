@@ -5,6 +5,47 @@ from scipy.sparse.linalg import eigs, eigsh
 from scipy.sparse import dok_matrix, diags
 from matplotlib import pyplot as plt
 
+class PIMS_Filter:
+  """
+
+  """
+  def __init__(self, adjacency_file, n_PC, plot_it=False):
+    self.adjacency_file = adjacency_file
+
+
+
+  def load_adjacency(self):
+    # Loads adjacency file and populates adjacency_list and adjacency_index
+    with open(adjacency_file, 'rb') as adj_file:
+      adjacency_dict = json.load(adj_file)
+
+    try:
+      adjacency_list = adjacency_dict["list"]
+      adjacency_index = adjacency_dict["nodes"]
+    except:
+      ValueError("Argument 'adjacency_file' must be a dictionary w/ keys, 'list' and 'nodes'")
+
+
+  def build_sparse_matrices(self):
+    # populates variables A, D, L
+    print('temp')
+
+  def eigendecomposition(self):
+    # populates evals and evecs
+    print('temp')
+
+  def project(self):
+    # projects to R^n where n == n_PC and populates P
+    print('temp')
+
+  def plot_it(self):
+    # plots in R^2, could also build to plot in R^3
+    print('temp')
+
+##################################################################
+####################### ORIGINAL SCRIPT ##########################
+##################################################################
+
 plot_it = True # must be n_PC = 2
 n_PC = 2 # number of principle components
 adjacency_file = 'dialectica-pimsifier/adjacency.json'
