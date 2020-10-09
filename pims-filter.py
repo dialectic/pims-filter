@@ -128,7 +128,8 @@ class PIMS_Filter:
 
 
 if __name__ == '__main__':
-    PF = PIMS_Filter(r'C:\Users\liqui\PycharmProjects\THESIS\venv\Lib\pims-filter\adjacency_train.json', 2, plot_it=True)
+    file_path = r'C:\Users\liqui\PycharmProjects\THESIS\venv\Lib\pims-filter\adjacency_train.json'
+    PF = PIMS_Filter(file_path, 2, plot_it=True)
 
     PF.main()
 
