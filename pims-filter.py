@@ -6,10 +6,13 @@ from scipy.sparse import dok_matrix, diags
 from matplotlib import pyplot as plt
 from matplotlib import rc
 import tikzplotlib
+import pickle
 
 plot_it = True # must be n_PC = 2
+plot_labeled = False # must be n_PC = 2
+pickle_it = True # pickle projection matrix
 n_PC = 2 # number of principle components
-adjacency_file = 'adjacency.json'
+adjacency_file = '../dialectica-pimsifier/adjacency_train.json'
 
 # load adjacency
 with open(adjacency_file, "r") as read_file:
@@ -75,6 +78,13 @@ print(f"  - P shape: {P.shape}")
 
 print(f"  - P: {P.todense()}")
 
+# pickle
+if pickle_it:
+  pickle.dump(
+    P.todense(),
+    open("../Data/Projection.pkl", "wb")
+  )
+
 # plot scatter 
 if plot_it:
   P = np.asarray(P.todense())
@@ -84,7 +94,7 @@ if plot_it:
   plt.show()
 
 # plot labeled scatter 
-if plot_it:
+if plot_labeled:
   # rc('font',**{'family':'sans-serif','sans-serif':['Helvetica']})
   rc('text', usetex=True)
   fig, ax = plt.subplots()
