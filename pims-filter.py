@@ -69,19 +69,19 @@ class PIMS_Filter:
         # - used sigma=0 to do the shift-invert mode
 
 
-        evals_small, evecs_small = eigsh(self.L, self.n_PC, sigma=0, which='LM')
-        # evals_small, evecs_small = eigsh(L, n_PC, which='SA')
-
+        try:
+          evals_small, evecs_small = eigsh(L, n_PC+1, sigma=0, which='LM')
+        except RuntimeError:
+          evals_small, evecs_small = eigsh(L, n_PC+1, which='SA')
+        
         if any(evals_small <= 0):
             raise ValueError(f'evals_small <= 0') # TODO add a more helpful error message
-        self.evals = 1 / evals_small
-
-        self.evecs = evecs_small  # scale by whatever
+        
+        self.evals = 1/evals_small[1:None] # exclude smallest because it's approximating the zero eigenvalue
+        self.evecs = evecs_small[:,1:None] # exclude smallest because it's approximating the zero eigenvalue
         self.evecs_T = self.evecs.T
+
         print(f"  - truncated evals: {self.evals}")
-
-
-
 
         # error checking: evals should all be positive or zero
 
