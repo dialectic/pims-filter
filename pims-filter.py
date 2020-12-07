@@ -4,6 +4,7 @@ from scipy.linalg import eig, eigh
 from scipy.sparse.linalg import eigs, eigsh
 from scipy.sparse import dok_matrix, diags
 from matplotlib import pyplot as plt
+from mpl_toolkits import mplot3d
 
 class PIMS_Filter:
     """
@@ -108,11 +109,26 @@ class PIMS_Filter:
         print(f"  - P shape: {self.P.shape}")
 
     def plot(self):
-        # plots in R^2, could also build to plot in R^3
         P = np.asarray(self.P.todense())
-        plt.scatter(P[0, :], P[1, :])
-        # plt.tight_layout()
-        plt.xlim([P[0, :].min(), P[0, :].max()])
+        if self.n_PC == 1:
+          print(f'TODO: Cannot plot {self.n_PC} dimensions.')
+        elif self.n_PC == 2:
+          fig = plt.figure()
+          ax = fig.add_subplot(111)
+          plt.scatter(P[0, :], P[1, :])
+          plt.xlim([P[0, :].min(), P[0, :].max()])
+        elif self.n_PC == 3:
+          fig = plt.figure()
+          ax = plt.axes(projection='3d')
+          ax.scatter3D(
+            P[0, :], P[1, :], P[2, :]
+          )
+          plt.xlim([P[0, :].min(), P[0, :].max()])
+          plt.ylim([P[1, :].min(), P[1, :].max()])
+          ax.set_zlim([P[2, :].min(), P[2, :].max()])
+        else:
+          print(f'Cannot plot {self.n_PC} dimensions.')
+          return 1
         plt.show()
 
 
