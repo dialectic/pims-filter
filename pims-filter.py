@@ -70,9 +70,9 @@ class PIMS_Filter:
 
 
         try:
-          evals_small, evecs_small = eigsh(L, n_PC+1, sigma=0, which='LM')
+          evals_small, evecs_small = eigsh(self.L, self.n_PC+1, sigma=0, which='LM')
         except RuntimeError:
-          evals_small, evecs_small = eigsh(L, n_PC+1, which='SA')
+          evals_small, evecs_small = eigsh(self.L, self.n_PC+1, which='SA')
         
         if any(evals_small <= 0):
             raise ValueError(f'evals_small <= 0') # TODO add a more helpful error message
@@ -109,11 +109,10 @@ class PIMS_Filter:
 
     def plot(self):
         # plots in R^2, could also build to plot in R^3
-
-        self.P = np.asarray(self.P.todense())
-        plt.scatter(self.P[0, :], self.P[1, :])
+        P = np.asarray(self.P.todense())
+        plt.scatter(P[0, :], P[1, :])
         # plt.tight_layout()
-        plt.xlim([self.P[0, :].min(), self.P[0, :].max()])
+        plt.xlim([P[0, :].min(), P[0, :].max()])
         plt.show()
 
 
