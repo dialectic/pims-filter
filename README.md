@@ -1,6 +1,6 @@
 # pims-filter
 
-[![DOI](https://zenodo.org/badge/229685927.svg)](https://zenodo.org/badge/latestdoi/229685927)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4312300.svg)](https://doi.org/10.5281/zenodo.4312300)
 
 This Python package is a personal information management filter (PIMS filter) for text-based user information.
 
