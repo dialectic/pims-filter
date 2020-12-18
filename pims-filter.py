@@ -14,7 +14,7 @@ class PIMS_Filter:
     TODO:
 
     """
-    def __init__(self, adjacency_file, n_PC, plot_it=False, plot_dim=2):
+    def __init__(self, adjacency_file, n_PC, plot_it=False, plot_dim=2, save_path=''):
         self.adjacency_file = adjacency_file
         self.n_PC = n_PC
         self.plot_it = plot_it
@@ -29,6 +29,8 @@ class PIMS_Filter:
         self.evals = []
         self.evecs = []
         self.evecs_T = []
+
+        self.save_path = save_path
 
     def load_adjacency(self):
         # Loads adjacency file and populates adjacency_list and adjacency_index
@@ -132,6 +134,13 @@ class PIMS_Filter:
         plt.show()
 
 
+    def save_projection(self):
+        import pickle
+        proj = dok_matrix.toarray(self.P)
+        proj = proj.T
+        with open(self.save_path, 'wb') as f:
+            pickle.dump(proj, f)
+
 
     def main(self):
         self.load_adjacency()
@@ -140,11 +149,14 @@ class PIMS_Filter:
         self.project()
         if self.plot_it:
             self.plot()
+        if self.save_path != '':
+            self.save_projection()
 
 
 if __name__ == '__main__':
     file_path = r'C:\Users\liqui\PycharmProjects\THESIS\venv\Lib\pims-filter\adjacency_train.json'
-    PF = PIMS_Filter(file_path, 2, plot_it=True)
+    save_path = r'C:\Users\liqui\PycharmProjects\Generation_of_Novel_Metastimulus\Lib\Misc_Data\Projection_10dims.pkl'
+    PF = PIMS_Filter(file_path, 10, save_path=save_path, plot_it=False)
 
     PF.main()
 
