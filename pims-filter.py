@@ -137,7 +137,7 @@ class PIMS_Filter:
     def save_projection(self):
         import pickle
         proj = dok_matrix.toarray(self.P)
-        proj = proj.T
+
         with open(self.save_path, 'wb') as f:
             pickle.dump(proj, f)
 
@@ -155,8 +155,8 @@ class PIMS_Filter:
 
 if __name__ == '__main__':
     file_path = r'C:\Users\liqui\PycharmProjects\THESIS\venv\Lib\pims-filter\adjacency_train.json'
-    save_path = r'C:\Users\liqui\PycharmProjects\Generation_of_Novel_Metastimulus\Lib\Misc_Data\Projection_10dims.pkl'
-    PF = PIMS_Filter(file_path, 10, save_path=save_path, plot_it=False)
+    save_path = r'C:\Users\liqui\PycharmProjects\Generation_of_Novel_Metastimulus\Lib\Misc_Data\Projection_3dims.pkl'
+    PF = PIMS_Filter(file_path, 3, save_path=save_path, plot_it=False)
 
     PF.main()
 
