@@ -154,9 +154,9 @@ class PIMS_Filter:
 
 
 if __name__ == '__main__':
-    file_path = r'C:\Users\liqui\PycharmProjects\THESIS\venv\Lib\pims-filter\adjacency_train.json'
-    save_path = r'C:\Users\liqui\PycharmProjects\Generation_of_Novel_Metastimulus\Lib\Misc_Data\Projection_9dims.pkl'
-    PF = PIMS_Filter(file_path, 9, save_path=save_path, plot_it=False)
+    file_path = r'adjacency_train.json'
+    save_path = r'Projection_4dims.pkl'
+    PF = PIMS_Filter(file_path, 4, save_path=save_path, plot_it=False)
 
     PF.main()
 
